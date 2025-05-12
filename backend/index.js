@@ -13,13 +13,14 @@ const app = express();
 
 dotenv.config();
 
-const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost/5173',
-  credentials: true,
-};
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    methods: 'GET,POST,PUT,DELETE,PATCH',
+    credentials: true,
+  })
+);
 
-
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
