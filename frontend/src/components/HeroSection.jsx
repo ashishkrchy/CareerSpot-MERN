@@ -1,0 +1,178 @@
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
+import { Button } from './ui/button';
+import { Search, ArrowRight, Rocket } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
+
+import heroImage1 from '../assets/hero11.jpg';
+import heroImage2 from '../assets/hero7.jpg';
+import heroImage3 from '../assets/hero10.jpg';
+import { useDispatch } from 'react-redux';
+import { setSearchedQuery } from '@/store/jobSlice';
+import { useNavigate } from 'react-router-dom';
+
+const heroImages = [
+  { src: heroImage1, alt: 'Team collaborating on project' },
+  { src: heroImage2, alt: 'Successful job interview' },
+  { src: heroImage3, alt: 'Remote working setup' },
+];
+
+const slogans = [
+  'Your Career Journey Starts Here',
+  'Connecting Talent with Opportunity',
+  'Where Skills Meet Their Perfect Match',
+];
+
+const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentSloganIndex, setCurrentSloganIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+      setCurrentSloganIndex((prev) => (prev + 1) % slogans.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(setSearchedQuery(searchQuery));
+    navigate('/browse');
+  };
+  
+
+  return (
+    <div className="container mx-auto px-4 sm:px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 bg-black text-white py-12 md:py-20">
+      {/* Left side - Text content */}
+      <div className="text-center md:text-left flex-1">
+        <div className="flex flex-col gap-6 items-center md:items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="px-5 py-2 rounded-full bg-gray-900 text-red-500 font-medium text-sm md:text-base shadow-sm border border-gray-800 flex items-center gap-2"
+          >
+            <Rocket className="h-4 w-4" />
+            <span>No. 1 Job Hunt Platform</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentSloganIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="block mb-3"
+              >
+                {slogans[currentSloganIndex]}
+              </motion.span>
+            </AnimatePresence>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500">
+              Accelerate Your Career
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-gray-400 max-w-xl mx-auto md:mx-0 text-sm md:text-base leading-relaxed"
+          >
+            Join thousands of professionals who found their dream jobs through
+            our platform. Whether you're starting out or leveling up, we've got
+            opportunities for every stage of your career journey.
+          </motion.p>
+
+          <motion.form
+            onSubmit={handleSearch}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex w-full max-w-xl shadow-lg border-2 border-gray-800 pl-4 pr-2 py-2 rounded-full items-center gap-2 bg-gray-900 hover:border-blue-500 transition-all duration-300"
+          >
+            <Search className="h-5 w-5 text-gray-500" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Job title, keywords, or company"
+              className="outline-none border-none w-full text-sm md:text-base placeholder:text-gray-500 bg-transparent text-white"
+            />
+            <Button
+              type="submit"
+              className="bg-gradient-to-r from-blue-600 to-red-600 text-white rounded-full shadow-lg hover:scale-105 transition-transform hover:shadow-red-500/20 flex items-center gap-1 cursor-pointer"
+            >
+              Search <ArrowRight className="h-4 w-4" />
+            </Button>
+          </motion.form>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-wrap gap-3 mt-4 justify-center md:justify-start"
+          >
+            <span className="text-xs text-gray-500">Trending searches:</span>
+            {['Software Engineer', 'Product Manager', 'Data Analyst'].map(
+              (term, idx) => (
+                <Button
+                  key={idx}
+                  variant="ghost"
+                  className="text-blue-400 hover:text-blue-300 text-xs h-6"
+                >
+                  {term}
+                </Button>
+              )
+            )}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Right side - Image Carousel */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="flex-1 flex justify-center md:justify-end max-w-xl"
+      >
+        <Carousel className="w-full">
+          <CarouselContent>
+            <CarouselItem>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative"
+                >
+                  <img
+                    src={heroImages[currentImageIndex].src}
+                    alt={heroImages[currentImageIndex].alt}
+                    className="w-full max-h-80 sm:max-h-96 object-fit rounded-2xl shadow-2xl border-2 border-gray-800"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </CarouselItem>
+          </CarouselContent>
+        </Carousel>
+      </motion.div>
+    </div>
+  );
+};
+
+export default HeroSection;
