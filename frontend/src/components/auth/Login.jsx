@@ -86,7 +86,7 @@ const Login = () => {
       setLoading(false);
     }
   };
-  
+
   const user = useSelector((store) => store.auth.user);
   useEffect(() => {
     if (user) {

@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AdminJobsTable from './AdminJobsTable';
 import useGetAllAdminJobs from '@/hooks/useGetAllAdminJobs';
-import { Badge } from '../ui/badge';
 
 const AdminJobs = () => {
   useGetAllAdminJobs();

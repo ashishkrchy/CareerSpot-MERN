@@ -11,9 +11,9 @@ import {
   File,
   Check,
 } from 'lucide-react';
-import { Input } from './ui/Input';
-import { Textarea } from './ui/Textarea';
-import { Button } from './ui/Button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Button } from './ui/button';
 import { toast } from 'sonner';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '@/store/authSlice';

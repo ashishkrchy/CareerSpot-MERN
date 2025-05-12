@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button } from '@/components/ui/button';
+import { Button } from './ui/button';
 import {
   Heart,
   HeartOff,
@@ -17,12 +17,12 @@ import {
   Loader2,
   Frown,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from './ui/badge';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeFromWishlist } from '@/store/jobSlice';
 import toast from 'react-hot-toast';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 const Wishlist = () => {
   const jobsWishlist = useSelector((store) => store.job.jobWishlist);

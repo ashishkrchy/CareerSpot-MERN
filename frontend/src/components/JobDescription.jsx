@@ -5,8 +5,8 @@ import {
   APPLICATION_API_END_POINT,
   JOB_API_END_POINT,
 } from '@/utils/backendApiEndpoint';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
 import {
   Loader2,
   AlertCircle,
@@ -29,10 +29,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { useSelector } from 'react-redux';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Skeleton } from './ui/skeleton';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { ArrowLeft } from 'lucide-react';
 import toast from 'react-hot-toast';
 
