@@ -26,6 +26,7 @@ const CompanySetUp = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState('');
+  const [error, setError] = useState('');
 
   // Fetch company data when component mounts
   useEffect(() => {
@@ -76,10 +77,11 @@ const CompanySetUp = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(''); // Clear previous errors
 
     // Basic validation
     if (!input.name.trim()) {
-      toast.error('Company name is required');
+      setError('Company name is required');
       setIsLoading(false);
       return;
     }
@@ -109,7 +111,7 @@ const CompanySetUp = () => {
       if (response.data.success) {
         toast.success(response.data.message);
         dispatch(setSingleCompany(response.data.company));
-        navigate('/admin/companies');
+        navigate(`/admin/companies/${response.data.company.id}`); // Redirect to company details page
       }
     } catch (err) {
       console.error(err);
@@ -153,6 +155,7 @@ const CompanySetUp = () => {
                   onChange={changeEventHandler}
                   required
                 />
+                {error && <p className="text-red-500 text-sm">{error}</p>}
               </div>
 
               <div className="space-y-2">

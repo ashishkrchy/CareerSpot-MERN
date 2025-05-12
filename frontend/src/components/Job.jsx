@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 
 const Job = ({ job }) => {
   const user = useSelector((store) => store.auth.user);
+  const dispatch = useDispatch();
 
   const daysAgo = (mongoTime) => {
     const date = new Date(mongoTime);
@@ -19,11 +20,10 @@ const Job = ({ job }) => {
     return diffDays === 0 ? 'Today' : `${diffDays} days ago`;
   };
 
-  const dispatch = useDispatch();
-
-  const handleWishlist = async () => {
+  const handleWishlist = async (e) => {
+    e.stopPropagation(); // Prevent card click from triggering
     if (!user) {
-      toast.error('Failed to add, Login First!', {
+      toast.error('Please login to add jobs to your wishlist', {
         style: {
           background: '#fef2f2',
           color: '#b91c1c',
@@ -32,78 +32,101 @@ const Job = ({ job }) => {
       });
       return;
     }
-
     dispatch(setJobWishlist(job));
-    toast.success('Job successfully added to wishlist!');
+    toast.success('Added to wishlist!');
   };
 
   const formatSalary = (salary) => {
     if (!salary) return 'Not disclosed';
-    else if (typeof salary === 'string' && salary.includes('L')) return salary;
-    else return `${salary} LPA`;
+    if (typeof salary === 'string' && salary.includes('L')) return salary;
+    return `${salary} LPA`;
   };
 
   return (
-    <div className="p-5 rounded-xl shadow-lg bg-gray-900 border border-gray-700 hover:border-blue-500 hover:shadow-blue-500/20 transition-all duration-300 h-95 flex flex-col">
+    <div
+      className="p-4 sm:p-5 rounded-lg sm:rounded-xl bg-gray-900 border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 flex flex-col h-full"
+      onClick={() => (window.location.href = `/description/${job._id}`)}
+      role="link"
+      aria-label={`View details for ${job.title || 'Job Title'} at ${
+        job.company?.name || 'Company'
+      }`}
+    >
       {/* Top bar */}
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-400">{daysAgo(job.updatedAt)}</p>
+      <div className="flex items-center justify-between mb-2 sm:mb-3">
+        <p className="text-xs text-gray-400">{daysAgo(job.updatedAt)}</p>
         <Button
-          variant="outline"
-          className="rounded-full border border-gray-600 hover:bg-gray-800 p-2 hover:text-blue-500 cursor-pointer"
-          size="icon"
+          variant="ghost"
+          size="sm"
+          onClick={handleWishlist}
+          className="p-1.5 sm:p-2 h-8 sm:h-10 w-8 sm:w-10 rounded-full hover:bg-gray-800 hover:text-blue-400"
+          aria-label="Add to wishlist"
         >
-          <Bookmark className="w-4 h-4 text-blue-600" />
+          <Bookmark className="w-4 sm:w-5 h-4 sm:h-5 text-blue-500" />
         </Button>
       </div>
 
       {/* Company Info */}
-      <div className="flex items-center gap-4 my-4">
-        <Avatar className="w-12 h-12 border border-blue-500/30">
+      <div className="flex items-center gap-3 mb-3 sm:mb-4">
+        <Avatar className="w-10 sm:w-12 h-10 sm:h-12 border border-blue-500/30">
           <AvatarImage
             src={job.company?.logo || 'https://via.placeholder.com/100'}
             className="object-contain bg-white rounded-full p-1"
+            alt={job.company?.name || 'Company logo'}
           />
-          <AvatarFallback className="bg-gray-800 text-white">
+          <AvatarFallback className="bg-gray-800 text-white text-sm sm:text-base">
             {job.company?.name?.charAt(0).toUpperCase() || 'C'}
           </AvatarFallback>
         </Avatar>
-        <div>
-          <h2 className="font-medium text-lg text-white">
+        <div className="min-w-0 flex-1">
+          <h2 className="font-medium text-base sm:text-lg text-white truncate">
             {job.company?.name || 'Company'}
           </h2>
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <MapPin className="w-4 h-4" />
-            <span>{job.company?.location || 'Location not specified'}</span>
+          <div className="flex items-center gap-1 text-gray-400 text-xs sm:text-sm">
+            <MapPin className="w-3 sm:w-4 h-3 sm:h-4 flex-shrink-0" />
+            <span className="truncate">
+              {job.company?.location || 'Location not specified'}
+            </span>
           </div>
         </div>
       </div>
 
       {/* Job Title and Description */}
-      <div className="flex-1 overflow-hidden">
-        <h2 className="font-bold text-lg mb-1 text-white line-clamp-1">
+      <div className="flex-1 overflow-hidden mb-3 sm:mb-4">
+        <h2 className="font-bold text-base sm:text-lg mb-1 text-white truncate">
           {job.title || 'Job Title'}
         </h2>
-        <p className="text-gray-300 text-sm line-clamp-3">
+        <p className="text-gray-300 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">
           {job.description || 'No description provided'}
         </p>
       </div>
 
       {/* Badges */}
-      <div className="flex items-center gap-2 mt-4 flex-wrap">
-        <Badge className="text-blue-400 bg-blue-900/30 hover:bg-blue-900/40 font-medium flex items-center gap-1">
-          <Briefcase className="w-3 h-3" />
-          {job.position || 0} positions
+      <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+        <Badge
+          variant="secondary"
+          className="text-blue-400 bg-blue-900/30 px-1.5 sm:px-2 py-0.5 text-xs max-w-[calc(50%-0.25rem)] sm:max-w-[calc(25%-0.5rem)]"
+        >
+          <Briefcase className="w-3 sm:w-4 h-3 sm:h-4 mr-1" />
+          <span className="truncate">{job.position || 0} pos</span>
         </Badge>
-        <Badge className="text-red-400 bg-red-900/30 hover:bg-red-900/40 font-medium">
-          {job.jobType || 'Full-time'}
+        <Badge
+          variant="secondary"
+          className="text-red-400 bg-red-900/30 px-1.5 sm:px-2 py-0.5 text-xs max-w-[calc(50%-0.25rem)] sm:max-w-[calc(25%-0.5rem)]"
+        >
+          <span className="truncate">{job.jobType || 'Full-time'}</span>
         </Badge>
-        <Badge className="text-white bg-green-700/50 hover:bg-green-900/40 font-medium">
-          {job.experience || '1-2 years'}
+        <Badge
+          variant="secondary"
+          className="text-green-400 bg-green-900/30 px-1.5 sm:px-2 py-0.5 text-xs max-w-[calc(50%-0.25rem)] sm:max-w-[calc(25%-0.5rem)]"
+        >
+          <span className="truncate">{job.experience || '1-2 yrs'}</span>
         </Badge>
-        <Badge className="text-blue-400 bg-blue-900/30 hover:bg-blue-900/40 font-medium flex items-center gap-1">
-          <IndianRupee className="w-3 h-3" />
-          {formatSalary(job.salary)}
+        <Badge
+          variant="secondary"
+          className="text-blue-400 bg-blue-900/30 px-1.5 sm:px-2 py-0.5 text-xs max-w-[calc(50%-0.25rem)] sm:max-w-[calc(25%-0.5rem)]"
+        >
+          <IndianRupee className="w-3 sm:w-4 h-3 sm:h-4 mr-1" />
+          <span className="truncate">{formatSalary(job.salary)}</span>
         </Badge>
       </div>
 

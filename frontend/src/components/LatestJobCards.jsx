@@ -4,12 +4,12 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import {
   Clock,
   MapPin,
-  DollarSign,
   Briefcase,
   Award,
   Zap,
   IndianRupee,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const LatestJobCards = ({ job }) => {
   const companyName = job?.company?.name || 'Company Name';
@@ -54,63 +54,68 @@ const LatestJobCards = ({ job }) => {
   const formattedSalary = formatSalary(salary);
 
   return (
-    <div className="group p-5 rounded-xl bg-gray-900 border border-gray-800 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer h-full flex flex-col">
+    <Link
+      to={`/description/${job?._id || 'default'}`}
+      className="block p-4 rounded-lg bg-gray-900 border border-gray-800 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 h-full"
+      aria-label={`View details for ${jobTitle} at ${companyName}`}
+    >
       {/* Company Info */}
-      <div className="flex items-center gap-4 mb-4">
-        <Avatar className="w-12 h-12 border-2 border-blue-500/30 group-hover:border-blue-500 transition-all">
+      <div className="flex items-start gap-3 mb-3">
+        <Avatar className="w-10 h-10 border-2 border-blue-500/30 group-hover:border-blue-500 transition-all">
           <AvatarImage
             src={job.company?.logo || 'https://via.placeholder.com/100'}
             className="object-contain bg-white p-1"
+            alt={`${companyName} logo`}
           />
-          <AvatarFallback className="bg-gray-800 text-white">
+          <AvatarFallback className="bg-gray-800 text-white text-sm">
             {companyName.charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
-        <div>
-          <h2 className="font-medium text-lg text-white group-hover:text-blue-400 transition-colors">
+        <div className="flex-1 min-w-0">
+          <h2 className="font-medium text-sm text-white group-hover:text-blue-400 transition-colors truncate">
             {companyName}
           </h2>
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <MapPin className="w-4 h-4" />
-            <span>{companyLocation}</span>
+          <div className="flex items-center gap-1 text-gray-400 text-xs">
+            <MapPin className="w-3 h-3" />
+            <span className="truncate">{companyLocation}</span>
           </div>
         </div>
       </div>
 
       {/* Job Info */}
-      <div className="flex-grow">
-        <h1 className="font-bold text-xl text-white mb-2 group-hover:text-blue-400 transition-colors">
+      <div className="mb-3">
+        <h1 className="font-bold text-base text-white mb-1 group-hover:text-blue-400 transition-colors truncate">
           {jobTitle}
         </h1>
-        <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+        <p className="text-gray-400 text-xs mb-2 line-clamp-2">
           {jobDescription}
         </p>
 
         {/* Posted Date */}
-        <div className="flex items-center gap-1 text-xs text-gray-500 mb-4">
+        <div className="flex items-center gap-1 text-xs text-gray-500 mb-2">
           <Clock className="w-3 h-3" />
           <span>Posted: {postedDate}</span>
         </div>
 
         {/* Requirements */}
         {requirements.length > 0 && (
-          <div className="mb-4">
-            <h3 className="text-red-400 text-sm font-medium mb-2 flex items-center gap-1">
-              <Zap className="w-4 h-4" /> Requirements
+          <div className="mb-2">
+            <h3 className="text-red-400 text-xs font-medium mb-1 flex items-center gap-1">
+              <Zap className="w-3 h-3" /> Requirements
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {requirements.slice(0, 3).map((req, index) => (
+            <div className="flex flex-wrap gap-1">
+              {requirements.slice(0, 2).map((req, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="text-blue-400 border-blue-400/30 bg-blue-400/10 hover:bg-blue-400/20 transition-colors py-1 px-2 text-xs"
+                  className="text-blue-400 border-blue-400/30 bg-blue-400/10 hover:bg-blue-400/20 transition-colors py-0.5 px-1.5 text-xs truncate max-w-[120px]"
                 >
                   {req}
                 </Badge>
               ))}
-              {requirements.length > 3 && (
+              {requirements.length > 2 && (
                 <Badge className="text-gray-400 bg-gray-800 text-xs">
-                  +{requirements.length - 3} more
+                  +{requirements.length - 2}
                 </Badge>
               )}
             </div>
@@ -119,23 +124,23 @@ const LatestJobCards = ({ job }) => {
 
         {/* Skills */}
         {skills.length > 0 && (
-          <div className="mb-4">
-            <h3 className="text-blue-400 text-sm font-medium mb-2 flex items-center gap-1">
-              <Award className="w-4 h-4" /> Skills
+          <div className="mb-2">
+            <h3 className="text-blue-400 text-xs font-medium mb-1 flex items-center gap-1">
+              <Award className="w-3 h-3" /> Skills
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.slice(0, 3).map((skill, index) => (
+            <div className="flex flex-wrap gap-1">
+              {skills.slice(0, 2).map((skill, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="text-red-400 border-red-400/30 bg-red-400/10 hover:bg-red-400/20 transition-colors py-1 px-2 text-xs"
+                  className="text-red-400 border-red-400/30 bg-red-400/10 hover:bg-red-400/20 transition-colors py-0.5 px-1.5 text-xs truncate max-w-[120px]"
                 >
                   {skill}
                 </Badge>
               ))}
-              {skills.length > 3 && (
+              {skills.length > 2 && (
                 <Badge className="text-gray-400 bg-gray-800 text-xs">
-                  +{skills.length - 3} more
+                  +{skills.length - 2}
                 </Badge>
               )}
             </div>
@@ -144,27 +149,27 @@ const LatestJobCards = ({ job }) => {
       </div>
 
       {/* Job Details Badges */}
-      <div className="mt-auto pt-4 border-t border-gray-800">
+      <div className="pt-2 border-t border-gray-800">
         <div className="grid grid-cols-2 gap-2">
-          <div className="flex items-center gap-1 text-sm">
-            <Briefcase className="w-4 h-4 text-blue-400" />
-            <span className="text-gray-300">{jobType}</span>
+          <div className="flex items-center gap-1 text-xs">
+            <Briefcase className="w-3 h-3 text-blue-400" />
+            <span className="text-gray-300 truncate">{jobType}</span>
           </div>
-          <div className="flex items-center gap-1 text-sm">
-            <IndianRupee className="w-4 h-4 text-red-400" />
-            <span className="text-gray-300">{formattedSalary}</span>
+          <div className="flex items-center gap-1 text-xs">
+            <IndianRupee className="w-3 h-3 text-red-400" />
+            <span className="text-gray-300 truncate">{formattedSalary}</span>
           </div>
-          <div className="flex items-center gap-1 text-sm">
-            <span className="text-blue-400">Positions:</span>
+          <div className="flex items-center gap-1 text-xs">
+            <span className="text-blue-400">Pos:</span>
             <span className="text-gray-300">{position}</span>
           </div>
-          <div className="flex items-center gap-1 text-sm">
+          <div className="flex items-center gap-1 text-xs">
             <span className="text-red-400">Exp:</span>
-            <span className="text-gray-300">{experience}</span>
+            <span className="text-gray-300 truncate">{experience}</span>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

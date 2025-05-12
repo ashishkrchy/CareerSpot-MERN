@@ -1,7 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import Navbar from './shared/Navbar';
-
 import Footer from './shared/Footer';
 import { Outlet, useNavigate } from 'react-router-dom';
 import HeroSection from './HeroSection';
@@ -19,22 +17,17 @@ const Home = () => {
   useEffect(() => {
     if (user?.role === 'recruiter') {
       navigate('/admin/companies');
-    } else {
-      navigate('/');
     }
-  }, []);
+  }, [user, navigate]);
 
   return (
-    <div className="bg-black">
+    <div className="bg-black w-full overflow-x-hidden">
       <Navbar />
-
       <HeroSection />
-
       <CategoryCarousel />
-
       <LatestJobs />
-
       <Footer />
+      <Outlet />
     </div>
   );
 };

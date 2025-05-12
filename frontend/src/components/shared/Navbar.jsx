@@ -94,20 +94,20 @@ const Navbar = () => {
   if (loading) {
     return (
       <div className="bg-black border-b-2 border-red-600 h-16 flex items-center justify-center">
-        <div className="animate-pulse text-white">Loading...</div>
+        <div className="animate-pulse text-white text-sm">Loading...</div>
       </div>
     );
   }
 
   return (
     <div className="bg-black border-b-2 border-red-600 shadow-lg">
-      <div className="flex items-center justify-between px-4 h-16 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 max-w-7xl mx-auto">
         {/* Logo */}
         <Link
           to="/"
-          className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity"
+          className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity"
         >
-          Career <span className="text-red-500">Spot</span>
+          Job<span className="text-red-500">Jolt</span>
         </Link>
 
         {/* Mobile Menu Toggle */}
@@ -115,7 +115,7 @@ const Navbar = () => {
           <button
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
-            className="text-white focus:outline-none"
+            className="text-white focus:outline-none p-2"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-red-500" />
@@ -126,14 +126,14 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {user && (
-            <ul className="flex gap-6 items-center font-medium">
+            <ul className="flex gap-4 lg:gap-6 items-center font-medium text-sm lg:text-base">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className={`flex items-center gap-1 ${
+                    className={`flex items-center gap-1.5 ${
                       activeLink === link.path
                         ? 'text-red-500'
                         : 'text-gray-300 hover:text-blue-400'
@@ -152,35 +152,35 @@ const Navbar = () => {
               <Link to="/login">
                 <Button
                   variant="outline"
-                  className="bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 cursor-pointer"
+                  className="bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 h-10 px-4 text-sm cursor-pointer"
                 >
                   Login
                 </Button>
               </Link>
               <Link to="/signUp">
-                <Button className="bg-red-600 hover:bg-red-700 text-white cursor-pointer">
-                  SignUp
+                <Button className="bg-red-600 hover:bg-red-700 text-white h-10 px-4 text-sm cursor-pointer">
+                  Sign Up
                 </Button>
               </Link>
             </div>
           ) : (
             <Popover>
               <PopoverTrigger asChild>
-                <Avatar className="cursor-pointer border border-white transition-all hover:border-red-600">
+                <Avatar className="cursor-pointer border border-white transition-all hover:border-red-600 h-9 w-9 lg:h-10 lg:w-10">
                   <AvatarImage
                     src={
                       user.profile?.profilePicture || 'https://github.com/100'
                     }
                     alt={user.fullname || 'User'}
                   />
-                  <AvatarFallback className="bg-blue-500 text-white">
+                  <AvatarFallback className="bg-blue-500 text-white text-sm">
                     {user.fullname?.charAt(0).toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent className="w-72 p-4 space-y-6 bg-black border border-gray-800">
                 <div className="flex items-center gap-4">
-                  <Avatar>
+                  <Avatar className="h-10 w-10">
                     <AvatarImage
                       src={
                         user.profile?.profilePicture || 'https://github.com/100'
@@ -192,10 +192,10 @@ const Navbar = () => {
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h4 className="font-semibold text-lg text-white">
+                    <h4 className="font-semibold text-base lg:text-lg text-white">
                       {user.fullname}
                     </h4>
-                    <p className="text-sm text-red-500 truncate">
+                    <p className="text-xs lg:text-sm text-red-500 truncate">
                       {user.email}
                     </p>
                   </div>
@@ -206,7 +206,7 @@ const Navbar = () => {
                       <Link to="/profile">
                         <Button
                           variant="outline"
-                          className="w-full flex gap-2 justify-start text-white bg-transparent border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 cursor-pointer"
+                          className="w-full flex gap-2 justify-start text-white bg-transparent border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 text-sm cursor-pointer"
                         >
                           <User2 className="w-4 h-4" />
                           View Profile
@@ -215,7 +215,7 @@ const Navbar = () => {
                       <Link to="/wishlist">
                         <Button
                           variant="outline"
-                          className="w-full flex gap-2 justify-start text-white bg-transparent border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 cursor-pointer"
+                          className="w-full flex gap-2 justify-start text-white bg-transparent border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 text-sm cursor-pointer"
                         >
                           <Heart className="w-4 h-4 text-red-600" />
                           Wishlist
@@ -226,7 +226,7 @@ const Navbar = () => {
 
                   <Button
                     variant="destructive"
-                    className="w-full flex gap-2 justify-start bg-red-600 hover:bg-red-700 cursor-pointer"
+                    className="w-full flex gap-2 justify-start bg-red-600 hover:bg-red-700 text-sm cursor-pointer"
                     onClick={handleLogout}
                   >
                     <LogOut className="w-4 h-4" />
@@ -241,14 +241,14 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden px-4 pt-2 pb-4 space-y-2 bg-black border-t border-gray-800">
-          <ul className="flex flex-col gap-1 font-medium">
+        <div className="md:hidden px-4 pt-3 pb-4 space-y-3 bg-black border-t border-gray-800">
+          <ul className="flex flex-col gap-1 font-medium text-sm">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
                   to={link.path}
                   onClick={closeMobileMenu}
-                  className={`flex items-center gap-2 py-2 px-3 rounded-md ${
+                  className={`flex items-center gap-2 py-3 px-3 rounded-md ${
                     activeLink === link.path
                       ? 'bg-gray-900 text-red-500'
                       : 'text-gray-300 hover:bg-gray-900 hover:text-blue-400'
@@ -262,27 +262,27 @@ const Navbar = () => {
           </ul>
 
           {!user ? (
-            <div className="flex flex-col gap-2 mt-3">
+            <div className="flex flex-col gap-2 mt-4">
               <Link to="/login" onClick={closeMobileMenu}>
                 <Button
                   variant="outline"
-                  className="w-full bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400"
+                  className="w-full bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 h-12 text-sm"
                 >
                   Login
                 </Button>
               </Link>
               <Link to="/signUp" onClick={closeMobileMenu}>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
-                  SignUp
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white h-12 text-sm">
+                  Sign Up
                 </Button>
               </Link>
             </div>
           ) : (
-            <div className="mt-4 space-y-2">
-              <div className="flex items-center gap-3 px-3 py-2 bg-gray-900 rounded-md">
+            <div className="mt-4 space-y-3">
+              <div className="flex items-center gap-3 px-3 py-3 bg-gray-900 rounded-md">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src={user.profile?.profilePicture} />
-                  <AvatarFallback className="bg-blue-500 text-white">
+                  <AvatarFallback className="bg-blue-500 text-white text-xs">
                     {user.fullname?.charAt(0).toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
@@ -296,11 +296,10 @@ const Navbar = () => {
 
               {user.role === 'student' && (
                 <>
-                  {' '}
                   <Link to="/profile" onClick={closeMobileMenu}>
                     <Button
                       variant="outline"
-                      className="w-full mt-2 bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400"
+                      className="w-full bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 h-12 text-sm"
                     >
                       <User2 className="w-4 h-4 mr-2" />
                       View Profile
@@ -309,7 +308,7 @@ const Navbar = () => {
                   <Link to="/wishlist" onClick={closeMobileMenu}>
                     <Button
                       variant="outline"
-                      className="w-full mt-2 bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400"
+                      className="w-full bg-transparent text-white border-blue-500 hover:bg-blue-500/10 hover:text-blue-400 h-12 text-sm"
                     >
                       <Heart className="w-4 h-4 mr-2 text-red-600" />
                       Wishlist
@@ -320,7 +319,7 @@ const Navbar = () => {
 
               <Button
                 variant="destructive"
-                className="w-full mt-2 bg-red-600 hover:bg-red-700 cursor-pointer"
+                className="w-full bg-red-600 hover:bg-red-700 h-12 text-sm cursor-pointer"
                 onClick={() => {
                   handleLogout();
                   closeMobileMenu();

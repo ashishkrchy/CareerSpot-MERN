@@ -37,7 +37,7 @@ const Companies = () => {
               />
             </div>
             <Button
-              className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2 cursor-pointer"
+              className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2 cursor-pointer mt-4 sm:mt-0"
               onClick={() => navigate('/admin/companies/create')}
             >
               <Plus className="h-4 w-4" />
@@ -47,8 +47,10 @@ const Companies = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="max-w-50 flex gap-3 items-center bg-gray-800 text-white p-3 rounded-lg shadow mb-3">
-          <h3 className="font-semibold">Total Companies : -</h3>
+        <div className="flex gap-3 items-center bg-gray-800 text-white p-3 rounded-lg shadow mb-3 w-full max-w-[600px] sm:max-w-full">
+          <h3 className="font-semibold text-sm sm:text-base">
+            Total Companies : -
+          </h3>
           <p className="text-xl font-bold">{companies.length}</p>
         </div>
 

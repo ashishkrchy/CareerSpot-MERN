@@ -95,7 +95,6 @@ const JobDescription = () => {
     try {
       console.log('CurrentUserID: ', currentUserID);
       if (!currentUserID) {
-        
         toast.error('Failed to apply, Login First!', {
           style: {
             background: '#fef2f2',

@@ -45,133 +45,142 @@ const HeroSection = () => {
     dispatch(setSearchedQuery(searchQuery));
     navigate('/browse');
   };
-  
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 bg-black text-white py-12 md:py-20">
-      {/* Left side - Text content */}
-      <div className="text-center md:text-left flex-1">
-        <div className="flex flex-col gap-6 items-center md:items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="px-5 py-2 rounded-full bg-gray-900 text-red-500 font-medium text-sm md:text-base shadow-sm border border-gray-800 flex items-center gap-2"
-          >
-            <Rocket className="h-4 w-4" />
-            <span>No. 1 Job Hunt Platform</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-          >
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentSloganIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="block mb-3"
-              >
-                {slogans[currentSloganIndex]}
-              </motion.span>
-            </AnimatePresence>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500">
-              Accelerate Your Career
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-400 max-w-xl mx-auto md:mx-0 text-sm md:text-base leading-relaxed"
-          >
-            Join thousands of professionals who found their dream jobs through
-            our platform. Whether you're starting out or leveling up, we've got
-            opportunities for every stage of your career journey.
-          </motion.p>
-
-          <motion.form
-            onSubmit={handleSearch}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex w-full max-w-xl shadow-lg border-2 border-gray-800 pl-4 pr-2 py-2 rounded-full items-center gap-2 bg-gray-900 hover:border-blue-500 transition-all duration-300"
-          >
-            <Search className="h-5 w-5 text-gray-500" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Job title, keywords, or company"
-              className="outline-none border-none w-full text-sm md:text-base placeholder:text-gray-500 bg-transparent text-white"
-            />
-            <Button
-              type="submit"
-              className="bg-gradient-to-r from-blue-600 to-red-600 text-white rounded-full shadow-lg hover:scale-105 transition-transform hover:shadow-red-500/20 flex items-center gap-1 cursor-pointer"
+    <section className="bg-black text-white w-full overflow-x-hidden py-12 sm:py-16">
+      <div className="flex flex-col items-center justify-center w-full px-4 sm:px-6 lg:px-8 gap-8">
+        {/* Text Content */}
+        <div className="text-center flex-1">
+          <div className="flex flex-col gap-4 sm:gap-6 items-center">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="px-4 py-2 rounded-full bg-gray-900 text-red-500 font-medium text-xs sm:text-sm shadow-sm border border-gray-800 flex items-center gap-2"
             >
-              Search <ArrowRight className="h-4 w-4" />
-            </Button>
-          </motion.form>
+              <Rocket className="h-4 w-4" />
+              <span>No. 1 Job Hunt Platform</span>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap gap-3 mt-4 justify-center md:justify-start"
-          >
-            <span className="text-xs text-gray-500">Trending searches:</span>
-            {['Software Engineer', 'Product Manager', 'Data Analyst'].map(
-              (term, idx) => (
-                <Button
-                  key={idx}
-                  variant="ghost"
-                  className="text-blue-400 hover:text-blue-300 text-xs h-6"
-                >
-                  {term}
-                </Button>
-              )
-            )}
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Right side - Image Carousel */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="flex-1 flex justify-center md:justify-end max-w-xl"
-      >
-        <Carousel className="w-full">
-          <CarouselContent>
-            <CarouselItem>
+            {/* Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+            >
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentImageIndex}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.05 }}
-                  transition={{ duration: 0.8 }}
-                  className="relative"
+                <motion.span
+                  key={currentSloganIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="block mb-2 sm:mb-3"
                 >
-                  <img
-                    src={heroImages[currentImageIndex].src}
-                    alt={heroImages[currentImageIndex].alt}
-                    className="w-full max-h-80 sm:max-h-96 object-fit rounded-2xl shadow-2xl border-2 border-gray-800"
-                  />
-                </motion.div>
+                  {slogans[currentSloganIndex]}
+                </motion.span>
               </AnimatePresence>
-            </CarouselItem>
-          </CarouselContent>
-        </Carousel>
-      </motion.div>
-    </div>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500">
+                Accelerate Your Career
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-gray-400 max-w-md sm:max-w-xl mx-auto text-sm sm:text-base leading-relaxed"
+            >
+              Join thousands of professionals who found their dream jobs through
+              our platform. Whether you're starting out or leveling up, we've
+              got opportunities for every stage of your career journey.
+            </motion.p>
+
+            {/* Search Bar */}
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex w-full max-w-md sm:max-w-xl shadow-lg border-2 border-gray-800 px-4 py-2 rounded-full items-center gap-2 bg-gray-900 hover:border-blue-500 transition-all duration-300"
+            >
+              <Search className="h-4 sm:h-5 w-4 sm:w-5 text-gray-500" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Job title, keywords, or company"
+                className="flex-1 outline-none border-none text-sm sm:text-base placeholder:text-gray-500 bg-transparent text-white"
+              />
+              <Button
+                type="submit"
+                onClick={handleSearch}
+                className="bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white h-10 sm:h-12 rounded-full shadow-lg hover:scale-105 transition-transform hover:shadow-red-500/20 flex items-center gap-1 cursor-pointer"
+              >
+                <span className="text-sm sm:text-base">Search</span>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </motion.form>
+
+            {/* Trending Searches */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-2 sm:gap-3 mt-3 sm:mt-4 justify-center"
+            >
+              <span className="text-xs sm:text-sm text-gray-500">
+                Trending searches:
+              </span>
+              {['Software Engineer', 'Product Manager', 'Data Analyst'].map(
+                (term, idx) => (
+                  <Button
+                    key={idx}
+                    variant="ghost"
+                    className="text-blue-400 hover:text-blue-300 text-xs sm:text-sm h-8 sm:h-9 px-3 sm:px-4"
+                  >
+                    {term}
+                  </Button>
+                )
+              )}
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Image Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-md sm:max-w-lg"
+        >
+          <Carousel className="w-full">
+            <CarouselContent>
+              <CarouselItem>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative"
+                  >
+                    <img
+                      src={heroImages[currentImageIndex].src}
+                      alt={heroImages[currentImageIndex].alt}
+                      className="w-full max-h-64 sm:max-h-80 object-cover rounded-2xl shadow-2xl border-2 border-gray-800"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

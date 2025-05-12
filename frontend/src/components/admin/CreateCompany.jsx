@@ -96,17 +96,17 @@ const CreateCompany = () => {
               {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
             </div>
 
-            <div className="flex justify-end space-x-4 pt-4">
+            <div className="flex flex-col sm:flex-row justify-end gap-4 pt-4">
               <Button
                 variant="outline"
-                className="text-gray-700 border-gray-300 hover:bg-gray-50"
+                className="text-gray-700 border-gray-300 hover:bg-gray-50 w-full sm:w-auto"
                 onClick={() => navigate('/admin/companies')}
                 disabled={isLoading}
               >
                 Cancel
               </Button>
               <Button
-                className="bg-red-600 hover:bg-red-700 text-white"
+                className="bg-red-600 hover:bg-red-700 text-white w-full sm:w-auto"
                 onClick={registerCompany}
                 disabled={isLoading || !companyName.trim()}
               >

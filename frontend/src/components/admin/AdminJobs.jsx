@@ -28,6 +28,7 @@ const AdminJobs = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Search Bar */}
             <div className="relative w-full sm:w-96">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
               <Input
@@ -37,8 +38,10 @@ const AdminJobs = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+
+            {/* New Job Button */}
             <Button
-              className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2 cursor-pointer"
+              className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2 cursor-pointer mt-4 sm:mt-0"
               onClick={() => navigate('/admin/jobs/post')}
             >
               <Plus className="h-4 w-4" />
@@ -48,7 +51,7 @@ const AdminJobs = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div className="bg-white p-4 rounded-lg shadow border border-gray-200">
             <h3 className="text-gray-600 font-medium">Total Jobs</h3>
             <p className="text-3xl font-bold text-blue-600">{jobs.length}</p>
@@ -57,7 +60,9 @@ const AdminJobs = () => {
 
         {/* Jobs Table */}
         <div className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
-          <AdminJobsTable searchTerm={searchTerm} />
+          <div className="overflow-x-auto">
+            <AdminJobsTable searchTerm={searchTerm} />
+          </div>
         </div>
       </div>
     </div>

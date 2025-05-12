@@ -114,30 +114,32 @@ const SignUp = () => {
     if (user) {
       navigate('/');
     }
-  });
+  }, [user, navigate]);
 
   return (
     <div className="bg-black min-h-screen">
       <Navbar />
-      <div className="flex items-center justify-center max-w-7xl mx-auto px-4">
-        <div className="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 my-10">
-          <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 rounded-xl p-6 md:p-8 lg:p-10 shadow-xl shadow-blue-500/10">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white mb-2">
+      <div className="flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Adjusted width and padding for mobile */}
+        <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl my-8 sm:my-10">
+          <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-gray-800 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl shadow-blue-500/10">
+            <div className="text-center mb-6 sm:mb-8">
+              {/* Responsive font sizes */}
+              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 Create Your{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-500">
                   Account
                 </span>
               </h1>
-              <p className="text-gray-400">
+              <p className="text-sm sm:text-base text-gray-400">
                 Join thousands of professionals finding their dream jobs
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Full Name */}
               <div className="space-y-2">
-                <Label className="text-gray-300 flex items-center gap-2">
+                <Label className="text-gray-300 flex items-center gap-2 text-sm sm:text-base">
                   <User className="h-4 w-4 text-blue-400" />
                   Full Name
                 </Label>
@@ -147,14 +149,14 @@ const SignUp = () => {
                   placeholder="John Doe"
                   value={formData.fullname}
                   onChange={handleChange}
-                  className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500"
+                  className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500 h-12 text-sm sm:text-base"
                   autoComplete="name"
                 />
               </div>
 
               {/* Email */}
               <div className="space-y-2">
-                <Label className="text-gray-300 flex items-center gap-2">
+                <Label className="text-gray-300 flex items-center gap-2 text-sm sm:text-base">
                   <Mail className="h-4 w-4 text-blue-400" />
                   Email Address
                 </Label>
@@ -164,14 +166,14 @@ const SignUp = () => {
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500"
+                  className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500 h-12 text-sm sm:text-base"
                   autoComplete="email"
                 />
               </div>
 
               {/* Phone Number */}
               <div className="space-y-2">
-                <Label className="text-gray-300 flex items-center gap-2">
+                <Label className="text-gray-300 flex items-center gap-2 text-sm sm:text-base">
                   <Phone className="h-4 w-4 text-blue-400" />
                   Phone Number
                 </Label>
@@ -181,14 +183,14 @@ const SignUp = () => {
                   placeholder="+91 9876543210"
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500"
+                  className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500 h-12 text-sm sm:text-base"
                   autoComplete="tel"
                 />
               </div>
 
               {/* Password */}
               <div className="space-y-2 relative">
-                <Label className="text-gray-300 flex items-center gap-2">
+                <Label className="text-gray-300 flex items-center gap-2 text-sm sm:text-base">
                   <Lock className="h-4 w-4 text-blue-400" />
                   Password
                 </Label>
@@ -199,7 +201,7 @@ const SignUp = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleChange}
-                    className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500 pr-10"
+                    className="bg-gray-900 border-2 border-gray-800 text-white placeholder-gray-500 focus:border-blue-500 h-12 text-sm sm:text-base pr-10"
                     autoComplete="new-password"
                   />
                   <button
@@ -208,9 +210,9 @@ const SignUp = () => {
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-5 w-5" />
+                      <EyeOff className="h-4 sm:h-5 w-4 sm:w-5" />
                     ) : (
-                      <Eye className="h-5 w-5" />
+                      <Eye className="h-4 sm:h-5 w-4 sm:w-5" />
                     )}
                   </button>
                 </div>
@@ -218,11 +220,13 @@ const SignUp = () => {
 
               {/* Role Selection */}
               <div className="space-y-3">
-                <Label className="block text-gray-300">Select Your Role</Label>
+                <Label className="block text_gray-300 text-sm sm:text-base">
+                  Select Your Role
+                </Label>
                 <RadioGroup
                   value={formData.role}
                   onValueChange={handleRoleChange}
-                  className="grid grid-cols-2 gap-4"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
                 >
                   <div className="flex items-center">
                     <RadioGroupItem
@@ -232,13 +236,13 @@ const SignUp = () => {
                     />
                     <Label
                       htmlFor="student"
-                      className={`flex flex-col items-center justify-center w-full p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                      className={`flex flex-col items-center justify-center w-full p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
                         formData.role === 'student'
                           ? 'border-blue-500 bg-blue-500/10'
                           : 'border-gray-800 hover:border-blue-400'
                       }`}
                     >
-                      <GraduationCap className="h-6 w-6 mb-2 text-blue-400" />
+                      <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 mb-2 text-blue-400" />
                       <span className="text-sm font-medium text-blue-300">
                         Student
                       </span>
@@ -252,13 +256,13 @@ const SignUp = () => {
                     />
                     <Label
                       htmlFor="recruiter"
-                      className={`flex flex-col items-center justify-center w-full p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                      className={`flex flex-col items-center justify-center w-full p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
                         formData.role === 'recruiter'
                           ? 'border-red-500 bg-red-500/10'
                           : 'border-gray-800 hover:border-red-400'
                       }`}
                     >
-                      <Briefcase className="h-6 w-6 mb-2 text-red-400" />
+                      <Briefcase className="h-5 w-5 sm:h-6 sm:w-6 mb-2 text-red-400" />
                       <span className="text-sm font-medium text-red-400">
                         Recruiter
                       </span>
@@ -267,14 +271,15 @@ const SignUp = () => {
                 </RadioGroup>
               </div>
 
+              {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full mt-6 bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white py-6 shadow-lg transition-all duration-300 cursor-pointer"
+                className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white py-3 sm:py-4 text-sm sm:text-base shadow-lg transition-all duration-300 cursor-pointer"
                 disabled={loading}
               >
                 {loading ? (
                   <div className="flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                     Creating account...
                   </div>
                 ) : (
@@ -282,7 +287,7 @@ const SignUp = () => {
                 )}
               </Button>
 
-              <div className="text-sm text-center text-gray-400 mt-4">
+              <div className="text-sm text-center text-gray-400 mt-3 sm:mt-4">
                 Already have an account?{' '}
                 <Link
                   to="/login"
