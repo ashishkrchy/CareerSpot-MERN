@@ -107,7 +107,7 @@ const Navbar = () => {
           to="/"
           className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent hover:opacity-90 transition-opacity"
         >
-          Job<span className="text-red-500">Jolt</span>
+          Career<span className="text-red-500">Spot</span>
         </Link>
 
         {/* Mobile Menu Toggle */}

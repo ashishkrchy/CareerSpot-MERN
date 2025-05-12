@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center space-x-2 mb-4 sm:mb-6">
             <span className="text-2xl sm:text-3xl bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent font-bold">
-              Job<span className="text-red-500">Jolt</span>
+              Career<span className="text-red-500">Spot</span>
             </span>
           </div>
           <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6">
