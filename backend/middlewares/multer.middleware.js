@@ -1,15 +1,14 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 
-const tempDir = './public/temp';
+const tempDir = path.join(os.tmpdir(), 'uploads');
 
-// Create temp directory if it doesn't exist
 if (!fs.existsSync(tempDir)) {
   fs.mkdirSync(tempDir, { recursive: true });
 }
 
-// Define storage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, tempDir);
@@ -21,7 +20,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// Define file filter
 const fileFilter = (req, file, cb) => {
   try {
     if (file.fieldname === 'resume') {
@@ -44,7 +42,6 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Configure multer upload
 export const upload = multer({
   storage,
   fileFilter,
