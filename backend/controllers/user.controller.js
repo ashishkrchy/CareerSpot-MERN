@@ -102,7 +102,7 @@ export const login = async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: true,
-      sameSite: 'none',
+      sameSite: 'None',
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -139,7 +139,7 @@ export const logout = async (req, res) => {
       path: '/',
       httpOnly: true,
       secure: true,
-      sameSite: 'none',
+      sameSite: 'None',
       expires: new Date(0),
     });
 
@@ -147,7 +147,7 @@ export const logout = async (req, res) => {
       path: '/',
       httpOnly: true,
       secure: true,
-      sameSite: 'none',
+      sameSite: 'None',
       expires: new Date(0),
     });
 
@@ -289,11 +289,4 @@ export const getUserProfile = async (req, res) => {
       success: false,
     });
   }
-};
-
-export const verifyToken = async (req, res) => {
-  res.status(200).json({
-    success: true,
-    user: req.user,
-  });
 };

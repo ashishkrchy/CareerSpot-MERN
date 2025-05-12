@@ -5,7 +5,6 @@ import {
   logout,
   updateProfile,
   getUserProfile,
-  verifyToken,
 } from '../controllers/user.controller.js';
 import { protect } from '../middlewares/auth.middleware.js';
 import { upload, handleMulterError } from '../middlewares/multer.middleware.js';
@@ -28,6 +27,5 @@ router.put(
 );
 
 router.get('/get-user-profile', protect, getUserProfile);
-router.get('/verify-token', protect, verifyToken);
 
 export default router;

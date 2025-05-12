@@ -39,14 +39,12 @@ const Navbar = () => {
     try {
       const response = await axios.delete(`${USER_API_END_POINT}/logout`, {
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
       });
 
       if (response.data.success) {
         dispatch(logout());
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         toast.success('Logged out successfully');
         navigate('/');
       }
