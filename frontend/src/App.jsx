@@ -13,10 +13,10 @@ import UpdateProfile from './components/UpdateProfile';
 import Companies from './components/admin/Companies';
 import AdminJobs from './components/admin/AdminJobs';
 import CreateCompany from './components/admin/CreateCompany';
-import CompanySetUp from './components/admin/companySetUp';
+import CompanySetUp from './components/admin/CompanySetUp';
 import PostJob from './components/admin/PostJob';
 import Applicants from './components/admin/Applicants.jsx';
-import Wishlist from './components/wishlist';
+import Wishlist from './components/Wishlist';
 import ProtectedRoutes from './components/admin/ProtectedRoutes';
 
 const appRouter = createBrowserRouter([
