@@ -6,20 +6,20 @@ CareerSpot is a full-stack job portal application built with the **MERN stack**,
 
 ## 📸 Screenshots
 
-<img src="https://github.com/user-attachments/assets/b4fdddc0-47ee-4b34-a9db-790585311471" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/3fe71192-3736-42fb-809f-ad5ea50864f1" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/f1672ae8-7796-4d52-91a6-ecec8926313b" width="800" height="auto" />
+<img src="https://github.com/user-attachments/assets/b4fdddc0-47ee-4b34-a9db-790585311471" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/3fe71192-3736-42fb-809f-ad5ea50864f1" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/f1672ae8-7796-4d52-91a6-ecec8926313b" width="600" height="auto" />
 
-<img src="https://github.com/user-attachments/assets/4ac7a603-5876-4e6c-86c1-8d81b47455a0" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/9ddd7ce7-0121-447c-ab5a-7bb340c36f98" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/919b7d0b-2d19-4d71-a914-fc6d76765215" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/4a1d996c-e467-43d8-bc58-21e61c73f34e" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/7fffc441-de08-4688-beb9-05b384f3a8ad" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/786fc545-671d-4859-8967-40173d278726" width="800" height="auto" />
+<img src="https://github.com/user-attachments/assets/4ac7a603-5876-4e6c-86c1-8d81b47455a0" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/9ddd7ce7-0121-447c-ab5a-7bb340c36f98" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/919b7d0b-2d19-4d71-a914-fc6d76765215" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/4a1d996c-e467-43d8-bc58-21e61c73f34e" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/7fffc441-de08-4688-beb9-05b384f3a8ad" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/786fc545-671d-4859-8967-40173d278726" width="600" height="auto" />
 
-<img src="https://github.com/user-attachments/assets/5920fc04-8332-4770-bb58-d23e53314326" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/3099a710-fe1d-497e-83c0-ec5e226ede1e" width="800" height="auto" />
-<img src="https://github.com/user-attachments/assets/573bb03c-d472-483a-b2a7-2f929626066e" width="800" height="auto" />
+<img src="https://github.com/user-attachments/assets/5920fc04-8332-4770-bb58-d23e53314326" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/3099a710-fe1d-497e-83c0-ec5e226ede1e" width="600" height="auto" />
+<img src="https://github.com/user-attachments/assets/573bb03c-d472-483a-b2a7-2f929626066e" width="600" height="auto" />
 
 
 ---
