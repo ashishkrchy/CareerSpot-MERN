@@ -11,8 +11,12 @@ CareerSpot is a full-stack job portal application built with the **MERN stack**,
 ![image](https://github.com/user-attachments/assets/919b7d0b-2d19-4d71-a914-fc6d76765215)
 ![image](https://github.com/user-attachments/assets/4a1d996c-e467-43d8-bc58-21e61c73f34e)
 ![image](https://github.com/user-attachments/assets/7fffc441-de08-4688-beb9-05b384f3a8ad)
-
 ![image](https://github.com/user-attachments/assets/786fc545-671d-4859-8967-40173d278726)
+
+![image](https://github.com/user-attachments/assets/5920fc04-8332-4770-bb58-d23e53314326)
+![image](https://github.com/user-attachments/assets/3099a710-fe1d-497e-83c0-ec5e226ede1e)
+![image](https://github.com/user-attachments/assets/573bb03c-d472-483a-b2a7-2f929626066e)
+
 
 
 ---
