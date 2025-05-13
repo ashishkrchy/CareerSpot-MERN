@@ -99,8 +99,8 @@ const Profile = () => {
         <div className="bg-gradient-to-br from-gray-900 to-black border border-red-600 rounded-xl p-4 sm:p-6 md:p-8 shadow-lg shadow-red-500/10">
           {/* Profile Header */}
           <div className="flex flex-col sm:flex-row justify-between gap-4 flex-wrap">
-            <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4 flex-wrap w-full sm:w-auto">
-              <Avatar className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-blue-600 shadow-lg shadow-blue-500/30">
+            <div className="flex flex-col xs:flex-row items-center xs:items-start gap-4 flex-wrap w-full sm:w-auto mx-auto">
+              <Avatar className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-blue-600 shadow-lg shadow-blue-500/30 ">
                 <AvatarImage src={userData.profilePicture} />
                 <AvatarFallback className="bg-gray-800 text-white">
                   {userData.fullname.charAt(0).toUpperCase()}
@@ -112,16 +112,6 @@ const Profile = () => {
                   {userData.fullname}
                 </h1>
                 <p className="text-sm text-gray-400">{user?.role || 'User'}</p>
-                <div className="mt-2 space-y-1 text-sm text-gray-300">
-                  <p className="flex items-center justify-center xs:justify-start gap-2">
-                    <Mail className="w-4 h-4 text-blue-500" />
-                    <span className="break-words">{userData.email}</span>
-                  </p>
-                  <p className="flex items-center justify-center xs:justify-start gap-2">
-                    <Contact className="w-4 h-4 text-blue-500" />
-                    <span>{userData.phoneNumber}</span>
-                  </p>
-                </div>
               </div>
             </div>
 
@@ -133,6 +123,24 @@ const Profile = () => {
               <Pen className="w-4 h-4" />
               Edit Profile
             </Button>
+          </div>
+
+          <div className="mt-5 w-full rounded-lg border border-gray-800 bg-gray-900/50 p-4 sm:p-6">
+            <h2 className="text-lg font-semibold text-white mb-3">Contact</h2>
+            <div className="space-y-4 text-sm text-gray-300">
+              <p className="flex flex-wrap items-center justify-start gap-2 break-all">
+                <Mail className="w-5 h-5 text-blue-500" />
+                <span className="text-center sm:text-left">
+                  {userData.email}
+                </span>
+              </p>
+              <p className="flex flex-wrap items-center justify-start  gap-2 break-words">
+                <Contact className="w-5 h-5 text-blue-500" />
+                <span className="text-center sm:text-left">
+                  {userData.phoneNumber}
+                </span>
+              </p>
+            </div>
           </div>
 
           {/* Bio */}
