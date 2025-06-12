@@ -27,6 +27,8 @@ CareerSpot is a full-stack job portal application built with the **MERN stack**,
 ## 🌟 Overview
 
 CareerSpot provides a smooth experience for both **job seekers** and **recruiters**, enabling job applications, company creation, job posting, and much more. The platform is mobile-responsive, equipped with role-based access, and enhanced by toast notifications and cloud image hosting.
+![image](https://github.com/user-attachments/assets/4ee4ed54-8f84-4ad3-b1b3-fa1782880a64)
+
 
 ---
 
